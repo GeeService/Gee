@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambio de Contraseña</title>
+    <style>
+        
+        form {
+            width: 80%;
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+   <div>
+    <form action="cambio_contraseña_exitoso.html" method="POST">
+        <h2>Cambio de Contraseña</h2>
+        <label for="matricula">Matrícula:</label>
+        <input type="text" id="matricula" name="matricula" required>
+        
+        <label for="nueva_contraseña">Nueva Contraseña:</label>
+        <input type="password" id="nueva_contraseña" name="nueva_contraseña" required>
+        
+        <label for="validar_contraseña">Validar Contraseña:</label>
+        <input type="password" id="validar_contraseña" name="validar_contraseña" required>
+        
+        <input type="submit" value="Enviar">
+    </form>
+   </div>
+</body>
+</html>
+

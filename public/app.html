@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="main3.js"></script>
+    <style>
+        /*
+            en si no que se ve abien en todos los dispositivos 
+            solo que en todas las pantalas de pc / laptop 
+            se vea bien 
+
+            el #barra ese si ala de aheuvo que se vea 
+            bien en todos los dispositivos 
+
+        */
+        #barra {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 10%;
+            background-color: #a0a0a0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+        }
+
+        #imagen_logo {
+            height: 55%;
+            width: auto;
+            margin-right: 1000px;
+        }
+
+        #imagen-lupa {
+            width: 20px;
+            height: auto;
+        }
+
+        #busqueda {
+            height: 23px;
+        }
+
+        #tablas {
+            position: absolute;
+            top: 100px;
+            left: 180px;
+        }
+
+        #div_botones {
+            position: absolute;
+            top: 160px;
+            left: 30px;
+        }
+
+        #comunicados {
+            display: none;
+            position: absolute;
+            top: 120px;
+            left: 320px;
+        }
+
+        #div3 {
+            display: none;
+            position: absolute;
+            top: 120px;
+            left: 480px;
+        }
+
+        #div4 {
+            display: none;
+            position: absolute;
+            top: 120px;
+            left: 480px;
+        }
+
+        #boton {
+            margin-right: 20px;
+        }
+
+        #boton1 {
+            position: absolute;
+            top: 300px;
+            left: 30px;
+        }
+
+        #boton2 {
+            position: absolute;
+            top: 400px;
+            left: 30px;
+        }
+
+        #boton3 {
+            position: absolute;
+            top: 200px;
+            left: 30px;
+        }
+
+        .boton-menu,
+        #boton4,
+        #boton_coumicados,
+        #boton5 {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+
+        }
+
+        .boton-menu:hover {
+            background-color: #003D7F;
+        }
+
+        #boton4:hover {
+            background-color: #003D7F;
+        }
+
+        #boton5:hover {
+            background-color: #003D7F;
+        }
+
+        #boton_coumicados:hover {
+            background-color: #003D7F;
+        }
+
+        #boton4 {
+            margin-left: 318px;
+            margin-top: 20px;
+        }
+
+        #boton_coumicados {
+            margin-left: 400px;
+            margin-top: 20px;
+        }
+
+        #boton5 {
+            margin-left: 280px;
+            margin-top: 20px;
+        }
+
+        form {
+            width: 80%;
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .campos {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form {
+            width: 80%;
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fcfcfc;
+        }
+
+        input[type="url"],
+        select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+
+        .mensajes {
+            color: red;
+        }
+        #mensajes_alumnos{
+            position: absolute;
+            top: 75px;
+            left: 1200px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div id="barra">
+        <img src="media/Gee.png" alt="Imagen" id="imagen_logo">
+        <input type="text" id="busqueda" placeholder="Buscar">
+        <button id="boton">
+            <img src="media/lupa.gif" alt="Buscar" id="imagen-lupa">
+        </button>
+    </div>
+    <div id="mensajes_alumnos">
+
+        <button id="boton_alumnos">Mensajes</button>
+
+    </div>
+    <div id="tablas">
+
+
+
+    </div>
+
+    <div id="comunicados">
+        <h1>Comunicados</h1>
+        <br>
+        <br>
+        <label for="grupo">Grupo:</label>
+        <select id="grupo" name="grupo">
+            <option value="1ZUTCZR">1ZUTCZR</option>
+            <option value="2ZUTCZR">2ZUTCZR</option>
+            <option value="3ZUTCZR">3ZUTCZR</option>
+            <option value="4ZUTCZR">4ZUTCZR</option>
+            <option value="5ZUTCZR">5ZUTCZR</option>
+            <option value="6ZUTCZR">6ZUTCZR</option>
+            <option value="7ZUTCZR">7ZUTCZR</option>
+            <option value="8ZUTCZR">8ZUTCZR</option>
+            <option value="0ZUTCZR">9ZUTCZR</option>
+            <option value="todos">Todos</option>
+        </select>
+        <br>
+        <br>
+        <label for="tipo">Tipo:</label>
+        <select id="tipo" name="tipo">
+            <option value="primordial">Primordial</option>
+            <option value="normal">Normal</option>
+        </select>
+        <br>
+        <br>
+        <label for="texto">Texto:</label>
+        <textarea id="texto" name="texto" rows="4" cols="50"></textarea>
+        <br>
+        <br>
+        <button id="boton_coumicados">Enviar</button>
+
+    </div>
+
+    <div id="div3">
+        <form>
+            <h2>Cambio Contraseñas</h2>
+            <label>Matrícula:</label>
+            <span id="mensaje" class="mensajes"></span>
+            <input type="text" id="matricula" class="campos" name="matricula">
+
+
+            <label>Nueva Contraseña:</label>
+            <span id="mensaje2" class="mensajes"></span>
+            <input type="password" id="contraseña" class="campos" name="nueva_contraseña">
+
+
+            <label>Validar Contraseña:</label>
+            <span id="mensaje3" class="mensajes"></span>
+            <input type="password" id="contraseña2" class="campos">
+
+
+        </form>
+        <button class="boton_formulario" id="boton4">Enviar</button>
+    </div>
+
+    <div id="div4">
+        <form action="envio_exitoso.html" method="POST">
+            <h2>Envío de Exámenes</h2>
+            <label for="url">URL:</label>
+            <span id="mensaje3" class="mensajes"></span>
+            <input type="url" id="url" name="url"/>
+            <label for="grupo">Grupo:</label>
+            <select id="grupo" name="grupo">
+                <option value="1ZUTCZR">1ZUTCZR</option>
+                <option value="2ZUTCZR">2ZUTCZR</option>
+                <option value="3ZUTCZR">3ZUTCZR</option>
+                <option value="4ZUTCZR">4ZUTCZR</option>
+                <option value="5ZUTCZR">5ZUTCZR</option>
+                <option value="6ZUTCZR">6ZUTCZR</option>
+                <option value="7ZUTCZR">7ZUTCZR</option>
+                <option value="8ZUTCZR">8ZUTCZR</option>
+                <option value="0ZUTCZR">9ZUTCZR</option>
+            </select>
+            <label>Matricula : </label>
+            <span id="mensaje4" class="mensajes"></span>
+            <input type="text" id="matricula2" class="campos">
+            <label>Materia: </label>
+            <span id="mensaje5" class="mensajes"></span>
+            <input type="text" id="materia" class="campos">
+            
+            
+
+        </form>
+
+        <button class="boton_formulario" id="boton5">Enviar</button>
+
+    </div>
+
+    <button class="boton-menu" id="boton1">Comunicados</button>
+    <button class="boton-menu" id="boton2">Contraseña</button>
+    <button class="boton-menu" id="boton3">Extraordinarios</button>
+
+
+</body>
+
+</html>

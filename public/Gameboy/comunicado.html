@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Texto</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            width: 80%;
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        select,
+        textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form action="envio_exitoso.html" method="POST">
+        <h2>Formulario de Texto</h2>
+        <label for="grupo">Grupo:</label>
+        <select id="grupo" name="grupo">
+            
+        </select>
+        
+        <label for="tipo">Tipo:</label>
+        <select id="tipo" name="tipo">
+            <option value="primordial">Primordial</option>
+            <option value="normal">Normal</option>
+        </select>
+        
+        <label for="texto">Texto:</label>
+        <textarea id="texto" name="texto" rows="4" cols="50" required></textarea>
+        
+        <button id="boton_coumicados">Enviar</button>
+    </form>
+</body>
+</html>
+
