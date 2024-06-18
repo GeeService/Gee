@@ -294,8 +294,8 @@ function filtro(dato) {
                         }
                         div_tabla.appendChild(tabla);
                         div_tabla.style.position = 'absolute';
-                        div_tabla.style.top = '110px';
-                        div_tabla.style.left = '170px';
+                        div_tabla.style.top = '150px';
+                        div_tabla.style.left = '30px';
 
                     })
                     .catch(error => {
