@@ -277,7 +277,8 @@ function filtro(dato) {
                         var valores = Object.values(contador)
                         console.log(valores)
                         console.log(encabezado)
-                        calcularGrafica(encabezado,valores)
+                        calcularGraficaDona(encabezado,valores)
+                        calcularGraficaBarra(encabezado,valores)
                         // Ahora creamos la tabla 
                         var tabla = document.createElement('table');
                         tabla.setAttribute('border', '1');
@@ -645,7 +646,7 @@ function exito() {
     div.style.left = '420px';
 }
 
-function calcularGrafica(encabesados , datos ){
+function calcularGraficaDona(encabesados , datos ){
 
     var canva = document.getElementById('graficadona').getContext('2d');
     var myDoughnutChart = new Chart(canva, {
@@ -656,15 +657,51 @@ function calcularGrafica(encabesados , datos ){
                 label: 'Alumnos',
                 data: datos,
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(255, 99, 132, 0.8)', 
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 206, 86, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(153, 102, 255, 0.8)',
+                    'rgba(255, 159, 64, 0.8)'
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 99, 132, 1)',   // Colores del borde
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,  
+            maintainAspectRatio: false,  
+        }
+    });
+
+}
+function calcularGraficaBarra(encabesados , datos ){
+
+    var canva = document.getElementById('graficabarra').getContext('2d');
+    var myDoughnutChart = new Chart(canva, {
+        type: 'bar',  // Tipo de gráfico de barra
+        data: {
+            labels: encabesados,
+            datasets: [{
+                label: 'Alumnos',
+                data: datos,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.8)', 
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 206, 86, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(153, 102, 255, 0.8)',
+                    'rgba(255, 159, 64, 0.8)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',   // Colores del borde
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 206, 86, 1)',
                     'rgba(75, 192, 192, 1)',
