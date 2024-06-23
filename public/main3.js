@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
         div_examenes.style.display = 'none'
         div_contraseña.style.display = 'none'
 
-        
+
 
 
     })
@@ -87,11 +87,11 @@ document.addEventListener('DOMContentLoaded', function () {
         var mensaje = document.getElementById('mensaje')
         var mensaje2 = document.getElementById('mensaje2')
         var mensaje3 = document.getElementById('mensaje3')
-        
+
         mensaje.innerHTML = ""
         mensaje2.innerHTML = ""
         mensaje3.innerHTML = ""
-    
+
         // Verificar campos vacíos
         if (matricula == "") {
             mensaje.innerHTML = "campo vacío"
@@ -102,13 +102,13 @@ document.addEventListener('DOMContentLoaded', function () {
         if (contraseña2 == "") {
             mensaje3.innerHTML = "campo vacío"
         }
-    
+
         // Verificar si las contraseñas coinciden
         if (contraseña != contraseña2) {
             mensaje2.innerHTML = "Las contraseñas no coinciden"
             mensaje3.innerHTML = "Las contraseñas no coinciden"
         }
-    
+
         // Si no hay campos vacíos ni contraseñas que no coinciden, proceder con la acción
         if (matricula != "" && contraseña != "" && contraseña2 != "" && contraseña == contraseña2) {
             console.log(matricula)
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
 
-    boton5.addEventListener('click', function(){
+    boton5.addEventListener('click', function () {
 
         var div_examenes = document.getElementById('div4')
         var div_contraseña = document.getElementById('div3')
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
         div_examenes.style.display = "none"
 
         var titulo = document.createElement('h1')
-        var  mensaje = document.createElement('h2')
+        var mensaje = document.createElement('h2')
         titulo.innerHTML = "Mensajes"
         mensaje.innerHTML = "Aun no cuentas con mensajes de tus alumnos"
         div_tabla.appendChild(titulo)
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
         div_tabla.style.left = '370px';
 
     })
-    boton6.addEventListener('click',function(){
+    boton6.addEventListener('click', function () {
         console.log("hola mundo ")
         var comunicados = document.getElementById('comunicados')
         var grupo = document.getElementById('grupo')
@@ -170,23 +170,23 @@ document.addEventListener('DOMContentLoaded', function () {
         const url_comunicado = "http://127.0.0.1:3000/comunicados/" + valorSeleccionado + "/" + valorSeleccionado2 + "/" + valorTextarea
 
         fetch(url_comunicado)
-        .then(response => {
-            if(!response.ok){
-                imagen_404()
-            }else{
-                return response.json()
-            }
-        })
-        .then(data => {
-            comunicados.innerHTML = ' '
-            exito()
-        })
-        .catch(error => {
-            console.log(error)
-        })
+            .then(response => {
+                if (!response.ok) {
+                    imagen_404()
+                } else {
+                    return response.json()
+                }
+            })
+            .then(data => {
+                comunicados.innerHTML = ' '
+                exito()
+            })
+            .catch(error => {
+                console.log(error)
+            })
     })
 
-    boton7.addEventListener('click', function(){
+    boton7.addEventListener('click', function () {
         var div_examenes = document.getElementById('div4');
         var link = document.getElementById('url').value;
         var grupo = document.getElementById('grupo');
@@ -196,11 +196,11 @@ document.addEventListener('DOMContentLoaded', function () {
         var mensaje = document.getElementById('mensaje3');
         var mensaje2 = document.getElementById('mensaje4');
         var mensaje3 = document.getElementById('mensaje5');
-    
+
         mensaje.innerHTML = ''; // Limpiamos el contenido de los mensajes antes de verificar
         mensaje2.innerHTML = '';
         mensaje3.innerHTML = '';
-    
+
         if (link == "" || matricula == "" || materia == "") {
             mensaje.innerHTML = "Campo vacío";
             mensaje2.innerHTML = "Campo vacío";
@@ -210,8 +210,8 @@ document.addEventListener('DOMContentLoaded', function () {
             exito();
         }
     });
-    
-    
+
+
 });
 
 
@@ -245,7 +245,7 @@ function filtro(dato) {
                         }
                     })
                     .then(data => {
-
+                        let curso = []
                         const arreglo = data;
                         const elementos = arreglo.length;
 
@@ -256,7 +256,28 @@ function filtro(dato) {
 
                         // Primero tomamos las llaves del primer elemento del arreglo 
                         const llaves = Object.keys(arreglo[0]);
+                        for (let i = 0; i < elementos; i++) {
+                            var grupo = arreglo[i]['grupo']
+                            curso.push(grupo)
+                        }
+                        curso.sort()
+                        //console.log(curso)
+                        let contador = {};
 
+                        // Contar ocurrencias de cada elemento
+                        curso.forEach(elemento => {
+                            if (contador[elemento]) {
+                                contador[elemento]++;
+                            } else {
+                                contador[elemento] = 1;
+                            }
+                        });
+                        //console.log(contador)
+                        var encabezado = Object.keys(contador)
+                        var valores = Object.values(contador)
+                        console.log(valores)
+                        console.log(encabezado)
+                        calcularGrafica(encabezado,valores)
                         // Ahora creamos la tabla 
                         var tabla = document.createElement('table');
                         tabla.setAttribute('border', '1');
@@ -622,4 +643,41 @@ function exito() {
     div.style.position = 'absolute';
     div.style.top = '110px';
     div.style.left = '420px';
+}
+
+function calcularGrafica(encabesados , datos ){
+
+    var canva = document.getElementById('graficadona').getContext('2d');
+    var myDoughnutChart = new Chart(canva, {
+        type: 'doughnut',  // Tipo de gráfico de dona
+        data: {
+            labels: encabesados,
+            datasets: [{
+                label: 'Alumnos',
+                data: datos,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,  
+            maintainAspectRatio: false,  
+        }
+    });
+
 }

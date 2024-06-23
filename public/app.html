@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="main3.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js""></script>
+    <script src="main3.js" defer></script>
     <style>
         /*
             en si no que se ve abien en todos los dispositivos 
@@ -196,6 +197,11 @@
             top: 75px;
             left: 1200px;
         }
+        #grafica {
+            position: absolute;
+            top: 50%;
+            left: 100%;
+        }
         
     </style>
 </head>
@@ -310,6 +316,10 @@
     <button class="boton-menu" id="boton2">Contraseña</button>
     <button class="boton-menu" id="boton3">Extraordinarios</button>
 
+
+    <div id="grafica">
+        <canvas id="graficadona"></canvas>
+    </div>
 
 </body>
 
