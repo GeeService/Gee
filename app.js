@@ -8,6 +8,7 @@ const session = require('express-session');
 const morgan = require('morgan')
 
 
+
 const conexion = mysql.createConnection({
 
 	host : '127.0.0.1',
@@ -48,7 +49,15 @@ app.use((req,res,next) => {
     console.log("Método ->", req.method);
     console.log("Ruta ->", req.url);
     console.log("Hora ->", now.toLocaleString());
-    next();
+	var consultaLogger = "insert into loggers(metodo,enlace,dia) values(?,?,?)"
+	conexion.query(consultaLogger, [metodo,ruta,hora] ,(error,resultado) => {
+			if(error){
+				console.log("error en la insecion de datos")
+			}else{
+				console.log("Datos agregados con exito")
+				next()
+			}
+	})	
 })
 
 app.get('/' , (req,res) => {
@@ -59,26 +68,45 @@ app.get('/login' , (req,res) => {
 	res.sendFile(path.join(__dirname,"public","inicio.html"))
 })
 
-app.get('/ingreso/:correo/:contra', (req,res) => {
+app.get('/ingreso/:correo/:contra', (req,res,next) => {
 	var correo = req.params.correo
 	var contra = req.params.contra
 	console.log("Solicitud Entrate")
 	var contra = req.params.contra
 	var correo = req.params.correo
 	const consulta = "select email from coordinador where email = ? and contra = ? "
-	conexion.query(consulta , [correo,contra] , (error,resultado) => {
-		// 
-		if(error){
-			console.log("erro en el respuesta" , error)
-		}else {
+
+	conexion.query(consulta, [correo,contra], (error, resultado) => {
+        if (error) {
+            console.log("Error en la consulta");
+            res.status(500).send("Error en la consulta");
+        } else if (resultado.length === 0) {
+            res.status(401).send("Correo o contraseña incorrectos");
+        } else { // todo si el usuario logro un inicio exitoso 
+            console.log("Usuario autenticado"); 
+            req.session.isAuthenticated = true; // todo decimos que el usuario ya esta en verdadero 
+            req.session.user = resultado[0]; // todo almacenamos el nombre
 			res.json(resultado)
-			console.log("Exito")
-			
-		}
-	})
+        }
+    });
 	
 })
- 
+
+// Middleware para verificar autenticación
+function checkAuth(req, res, next) {
+    if (req.session.isAuthenticated) {
+        next(); // El usuario está autenticado, continuar con la siguiente ruta
+    } else {
+        res.status(401).send('No está autenticado');
+    }
+}
+
+// Aplicar el middleware de autenticación a todas las rutas que deben estar protegidas
+app.use('/alumnos', checkAuth);
+app.use('/mostrar', checkAuth);
+app.use('/grupos', checkAuth);
+app.use('/cambio', checkAuth);
+app.use('/comunicados', checkAuth);
 
 // ruta de busqueda por alumno de manera individual 
 
