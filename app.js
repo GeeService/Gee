@@ -1,12 +1,13 @@
 
-// primero vamos a hacer que corra apra irle agrgando cosas
-
 const mysql = require('mysql')
 const express = require('express')
 const app = express()
 const path = require('path')
 const cors = require('cors')
-// aqui van las concexiones de las base de datos pero cuando la tengamos 
+const session = require('express-session');
+const morgan = require('morgan')
+
+
 const conexion = mysql.createConnection({
 
 	host : '127.0.0.1',
@@ -14,17 +15,6 @@ const conexion = mysql.createConnection({
 	password : '5882',
 	database : 'alumnos'
 })
-app.use(cors())
-app.use(express.urlencoded({ extended: true }))
-// Configuración de CORS
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
-});
-
 conexion.connect((error)  => {
 	if (error){
 		console.log("error en la conexion",error)
@@ -34,26 +24,44 @@ conexion.connect((error)  => {
 
 })
 
+app.use(cors())
+app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname,'public')))
-
-// primero mostramos el prewie de la pagina  
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
+app.use(session({
+	secret : "Megadeth58825613",
+	resave : false,
+	saveUninitialized:true,
+	cookie: {secure:false} // todo cunado la subamos cambiarla a True 
+}))			
+app.use((req,res,next) => {
+	const now = new Date();
+	var metodo = req.method
+	var ruta = req.url
+	var hora = now.toLocaleString()
+    console.log("Método ->", req.method);
+    console.log("Ruta ->", req.url);
+    console.log("Hora ->", now.toLocaleString());
+    next();
+})
 
 app.get('/' , (req,res) => {
-
 	res.sendFile(path.join(__dirname,"public","index.html"))
-
 })
 
 app.get('/login' , (req,res) => {
-
 	res.sendFile(path.join(__dirname,"public","inicio.html"))
-
 })
 
-
-
-app.use("/ingreso/:correo/:contra",(req,res,next) => {
-
+app.get('/ingreso/:correo/:contra', (req,res) => {
+	var correo = req.params.correo
+	var contra = req.params.contra
 	console.log("Solicitud Entrate")
 	var contra = req.params.contra
 	var correo = req.params.correo
@@ -65,20 +73,9 @@ app.use("/ingreso/:correo/:contra",(req,res,next) => {
 		}else {
 			res.json(resultado)
 			console.log("Exito")
-			next()
+			
 		}
 	})
-	
-})
-
-
-// ahora recibiremos datos desde inico.html 
-app.get('/ingreso/:correo/:contra', (req,res) => {
-
-	var correo = req.params.correo
-	var contra = req.params.contra
-	//console.log(correo)
-	//console.log(contra)
 	
 })
  
