@@ -4,17 +4,17 @@
 }
 
 body {
+    background-color: #fcfcfc;
     background-image: url("media/gee4.jpeg");
     background-repeat: no-repeat;
-    background-size: cover; 
-    background-position: center; 
+    background-size: 60%; 
+    background-position: left center; 
     opacity: 0.99;
     margin: 0;
     padding: 0;
     min-width: 100%; 
     min-height: 100vh;
 }
-
 
 
 article {
@@ -28,13 +28,16 @@ article {
     margin: 18px auto;
     width: 90%;
     max-width: 600px;
-    background-color: rgba(202, 202, 191, 0.7);
+    background-color: rgba(253,253,253,255);
     padding: 5px 5%;
     border-radius: 10px;
 }
 
 #div {
-    margin: 90px auto;
+    position: absolute; 
+    top: 50%; 
+    left: 75%; 
+    transform: translate(-50%, -50%); 
     width: 90%;
     max-width: 600px;
     background-color: rgba(149, 151, 157, 0.7);
@@ -50,8 +53,9 @@ h1 {
 img {
     max-width: 100%;
     height: auto;
-    margin: 5px 0;
+    margin: 0px 0;
     cursor: pointer;
+    width: 50%; /* Redimensiona la imagen al 50% de su tamaño original */
 }
 
 input, #boton, button[type="reset"] {
@@ -88,8 +92,6 @@ button[type="reset"] {
     width: 200px; 
 }
 
-
-
 button[type="reset"]:hover {
     background-color: #FF7514;
 }
@@ -115,19 +117,4 @@ a:focus {
     color: rgba(3, 3, 85, 0.466);
 }
 
-.bts1{
-    background-color: beige;
-    position: absolute;
-}
 
-.bts2{
-    background-color: beige;
-    position: absolute;
-
-}
-
-.bts3{
-    background-color: beige;
-    position: absolute;
-
-}
