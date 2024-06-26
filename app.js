@@ -268,4 +268,8 @@ app.get('/comunicados/:grupo/:tipo/:texto' , (req,res) => {
 		})
 })
 
+app.use((req,res) => {
+	res.status(400).send("no existe la ruta a acceder ")
+})
+
 module.exports = app 
