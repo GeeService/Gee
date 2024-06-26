@@ -97,7 +97,8 @@ function checkAuth(req, res, next) {
     if (req.session.isAuthenticated) {
         next(); // El usuario está autenticado, continuar con la siguiente ruta
     } else {
-        res.status(401).send('No está autenticado');
+        //res.status(401).send('No está autenticado');
+		res.status(500).sendFile(path.join(__dirname,"public","noencontrada.html"))
     }
 }
 
@@ -269,7 +270,8 @@ app.get('/comunicados/:grupo/:tipo/:texto' , (req,res) => {
 })
 
 app.use((req,res) => {
-	res.status(400).send("no existe la ruta a acceder ")
+	//res.status(400).send("no existe la ruta a acceder ")
+	res.status(500).sendFile(path.join(__dirname,"public","error404.html"))
 })
 
 module.exports = app 
