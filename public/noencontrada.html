@@ -60,6 +60,7 @@
       }
     }
   </style>
+ 
 </head>
 <body>
   <div class="container">
@@ -70,7 +71,15 @@
     </svg>
     <h1>Oops, algo salió mal</h1>
     <p>Parece que hubo un problema con tu inicio de sesión. Por favor, vuelve a intentarlo.</p>
-    <a href="#" class="button">Volver a intentar</a>
+    <a href="#" class="button" id="boton">Volver a intentar</a>
+    <script>
+
+      var boton = document.getElementById('boton')
+      boton.addEventListener('click',function(){
+        window.location.href = "inicio.html"
+      })
+      
+    </script>
   </div>
 </body>
 </html>

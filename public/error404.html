@@ -67,13 +67,22 @@
       }
     }
   </style>
+
 </head>
 <body>
   <div class="container">
     <h1>404</h1>
     <h2>Página no encontrada</h2>
     <p>Lo sentimos, la página que has solicitado no se ha encontrado.</p>
-    <a href="/">Volver al inicio</a>
+    <button id="boton">Volver a inicio</button>
+    <script>
+
+      var boton = document.getElementById('boton')
+      boton.addEventListener('click',function(){
+        window.location.href = "inicio.html"
+      })
+      
+    </script>
   </div>
 </body>
 </html>

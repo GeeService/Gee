@@ -269,6 +269,10 @@ app.get('/comunicados/:grupo/:tipo/:texto' , (req,res) => {
 		})
 })
 
+app.get('/redireccionar',(req,res) => {
+	res.redirect('/login')	
+})
+
 app.use((req,res) => {
 	//res.status(400).send("no existe la ruta a acceder ")
 	res.status(500).sendFile(path.join(__dirname,"public","error404.html"))
