@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error de inicio de sesión</title>
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6;
+      color: #4b5563;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      text-align: center;
+      max-width: 90%;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .icon {
+      width: 48px;
+      height: 48px;
+      fill: #f56565; /* Color rojo */
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    p {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #6b7280; /* Color de texto gris */
+    }
+    .button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 10px 20px;
+      background-color: #4a90e2; /* Color azul */
+      color: #ffffff; /* Texto blanco */
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    .button:hover {
+      background-color: #357ac7; /* Color azul más oscuro al hacer hover */
+    }
+
+    /* Media queries para responsive */
+    @media screen and (min-width: 768px) {
+      .container {
+        max-width: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="10" />
+      <line x1="12" y1="8" x2="12" y2="12" />
+      <line x1="12" y1="16" x2="12.01" y2="16" />
+    </svg>
+    <h1>Oops, algo salió mal</h1>
+    <p>Parece que hubo un problema con tu inicio de sesión. Por favor, vuelve a intentarlo.</p>
+    <a href="#" class="button">Volver a intentar</a>
+  </div>
+</body>
+</html>
