@@ -4,7 +4,7 @@
 }
 
 body {
-    background-image: url("media/yotramas.jpg");
+    background-image: url("media/gee4.jpeg");
     background-repeat: no-repeat;
     background-size: cover; 
     background-position: center; 
@@ -28,7 +28,7 @@ article {
     margin: 18px auto;
     width: 90%;
     max-width: 600px;
-    background-color: rgba(235, 235, 220, 0.7);
+    background-color: rgba(202, 202, 191, 0.7);
     padding: 5px 5%;
     border-radius: 10px;
 }
@@ -37,7 +37,7 @@ article {
     margin: 90px auto;
     width: 90%;
     max-width: 600px;
-    background-color: rgba(241, 244, 247, 0.7);
+    background-color: rgba(149, 151, 157, 0.7);
     padding: 20px 5%;
     border-radius: 10px;
 }
