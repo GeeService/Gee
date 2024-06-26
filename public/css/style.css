@@ -1,3 +1,4 @@
+/* Estilos base que aplican a todas las pantallas */
 * {
     font-family: 'Lato', sans-serif;
     box-sizing: border-box;
@@ -15,7 +16,6 @@ body {
     min-width: 100%; 
     min-height: 100vh;
 }
-
 
 article {
     width: 90%;
@@ -117,4 +117,24 @@ a:focus {
     color: rgba(3, 3, 85, 0.466);
 }
 
+/* Media queries para pantallas más pequeñas */
+@media only screen and (max-width: 768px) {
+    body {
+        background-size: 100%;
+    }
+    
+    article, #register, #div {
+        width: 95%;
+        max-width: 95%;
+        padding: 3% 5%;
+    }
 
+    img {
+        width: 80%;
+    }
+
+    #boton, button[type="reset"] {
+        width: 100%;
+        font-size: 1rem;
+    }
+}
